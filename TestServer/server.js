@@ -4,6 +4,7 @@ var express = require('express');
 var app = express();
 // req.connection.remoteAddress 访问设备的IP
 // req.headers['user-agent']
+var resourceServer = 'http://192.168.2.107:1992/'
 fs.stat(__dirname + '/log', function(err, stats) {
 	if(!stats) {
 		fs.mkdirSync(__dirname + '/log');
@@ -13,6 +14,11 @@ fs.stat(__dirname + '/log', function(err, stats) {
 app.get('/home', function(req, res) {
 	visitLog(req);
 	res.send('Hello world');
+});
+
+app.get('/hero', function(req, res) {
+	visitLog(req);
+	res.sendFile(resourceServer + 'json/hero.json');
 });
 
 var visitLog = function(req) {
