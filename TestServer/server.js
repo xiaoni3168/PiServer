@@ -1,4 +1,5 @@
 var fs = require('fs');
+var request = require('request');
 var colors = require('colors');
 var express = require('express');
 var app = express();
@@ -18,7 +19,9 @@ app.get('/home', function(req, res) {
 
 app.get('/hero', function(req, res) {
 	visitLog(req);
-	res.send(resourceServer + 'json/hero.json');
+	request(resourceServer + 'json/hero.json', function(error, response, body) {
+		res.send(JSON.parse(body));
+	});
 });
 
 var visitLog = function(req) {
