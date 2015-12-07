@@ -18,7 +18,7 @@ app.get('/home', function(req, res) {
 
 app.get('/hero', function(req, res) {
 	visitLog(req);
-	res.sendFile(resourceServer + 'json/hero.json');
+	res.sendFile(fs.readFileSync(resourceServer + 'json/hero.json'));
 });
 
 var visitLog = function(req) {
