@@ -18,7 +18,7 @@ app.get('/home', function(req, res) {
 
 app.get('/hero', function(req, res) {
 	visitLog(req);
-	res.send(fresourceServer + 'json/hero.json');
+	res.send(resourceServer + 'json/hero.json');
 });
 
 var visitLog = function(req) {
